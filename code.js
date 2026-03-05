@@ -104,22 +104,27 @@ async function getposition(){
                 longitude:longitude,
                 accuracy:accuracy,
             }
+            try{
+                const response = await fetch(`https://geoapi.heartrails.com/api/json?method=searchByGeoLocation&x=${longitude}&y=${latitude}`,{method:'GET'})
+                
+                if(response.ok){
+                    const addressObj = await response.json()
+                    const nearest = addressObj.response.location[0]
 
-            const response = await fetch(`https://geoapi.heartrails.com/api/json?method=searchByGeoLocation&x=${longitude}&y=${latitude}`,{method:'GET'})
-            
-            if(response){
-                const addressObj = await response.json()
-                const nearest = addressObj.response.location[0]
+                    const address = nearest.prefecture + nearest.city + nearest.town
+                    positionData.address = address
+                }
 
-                const address = nearest.prefecture + nearest.city + nearest.town
-                positionData.address = address
+            } catch(e){
+                console.log('住所取得失敗：',e)
             }
+            
             resolve(positionData)
         }
 
         function positionError(err){
-            console.log(err)
-            return null
+            console.log(err.message)
+            resolve(null)
         }
     })
 }
@@ -140,7 +145,6 @@ async function submit(){
 
         await postGAS(data)
         alert('送信しました。')
-        //location.reload()
     } catch(e){
         errMsg(e)
     } finally{
