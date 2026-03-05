@@ -33,7 +33,7 @@ async function postGAS(data){
 }
 
 function load(){
-    const nameList = ['foo']
+    const nameList = ['隆太']
     const nameFragment = document.createDocumentFragment()
     nameList.forEach(name => {
         const newOption = document.createElement('option')
