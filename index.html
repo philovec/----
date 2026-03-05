@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <title>生存確認</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--ローディング画面-->
+    <div class="hidden" id="loading">
+        loading...
+    </div>
+
+    <!--メニュー-->
+    <div id="menu">
+        <p>使用する機能を選択してください。</p>
+        <select required>
+            <option value=""></option>
+            <option value="form">送信</option>
+            <option value="read">確認</option>
+        </select>
+    </div>
+
+    <!--送信モード-->
+    <form class="hidden" id="form">
+        <label>名前
+            <select id="name-select"></select>
+        </label>
+        <button id="submit-btn" type="button">送信</button>
+    </form>
+
+    <!--閲覧モード-->
+    <table class="hidden" id="read">
+        <thead>
+            <tr>
+                <th scope="column">更新日時</th>
+                <th scope="column">名前</th>
+                <th scope="column">緯度</th>
+                <th scope="column">経度</th>
+                <th scope="column">正確度(参考)</th>
+                <th scope="column">住所</th>
+                <th scope="column">備考</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <!--form,readでのフッター-->
+    <footer class="hidden" id="footer">
+        <a id="goto-menu">メインメニュー</a>
+    </footer>
+
+    <script src="code.js"></script>
+</body>

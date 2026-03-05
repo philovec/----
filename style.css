@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+/* =========================================
+   ベース設定
+========================================= */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* JSで制御する非表示クラス（※優先度を上げるため !important を付与） */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   ローディング画面
+========================================= */
+#loading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-top: 50px;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+}
+
+/* =========================================
+   フォーム＆メニュー系要素
+========================================= */
+/* 共通の入力要素デザイン（スマホで押しやすいサイズに） */
+select, button {
+    font-size: 16px; /* スマホでのズーム防止 */
+    padding: 12px 15px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+select:focus, button:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+/* ドロップダウンメニュー単体 */
+#menu {
+    max-width: 300px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+/* フォームのコンテナ */
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#form label {
+    width: 100%;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* 送信ボタン */
+#submit-btn {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#submit-btn:hover {
+    background-color: #004494;
+}
+
+/* 送信中（非アクティブ）のスタイル */
+#submit-btn:disabled, #name-select:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    border-color: #aaa;
+}
+
+/* =========================================
+   閲覧モード（テーブル）
+========================================= */
+#read {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 6px;
+    
+    /* スマホなどで横にはみ出した場合にスクロールできるようにする */
+    display: block; 
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+#read th, #read td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+#read th {
+    background-color: #0056b3;
+    color: #ffffff;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+#read tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 3番目(緯度), 4番目(経度), 5番目(正確度) の th と td に適用 */
+#read th:nth-child(3), #read td:nth-child(3),
+#read th:nth-child(4), #read td:nth-child(4),
+#read th:nth-child(5), #read td:nth-child(5) {
+    max-width: 80px;         /* 表示する最大幅（お好みで調整してください） */
+    overflow: hidden;        /* はみ出た部分を隠す */
+    text-overflow: ellipsis; /* 隠れた部分を「...」で省略表示する */
+    white-space: nowrap;     /* 改行させない */
+}
+
+/* =========================================
+   フッター
+========================================= */
+#footer {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#goto-menu {
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+#goto-menu:hover {
+    color: #004494;
+    text-decoration: none;
+}
