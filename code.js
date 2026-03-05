@@ -93,7 +93,7 @@ async function movePage(action){
 async function getposition(){
     const geo = navigator.geolocation
     return result = new Promise((resolve) =>{
-        geo.getCurrentPosition(positionSuccess,positionError)
+        geo.getCurrentPosition(positionSuccess,positionError,{timeout:5000})
 
         async function positionSuccess(pos){
             const latitude = pos.coords.latitude
