@@ -20,7 +20,7 @@ async function postGAS(data){
         body: JSON.stringify(data)
     }
 
-    const request = await fetch('https://script.google.com/macros/s/AKfycbxF3h5hmrMc0qACNH9CXODaxIYYwSJjJNVpdLH0UQoPURv8V2QHUDfZh7IxMwFYr01Tcg/exec',options)
+    const request = await fetch('https://script.google.com/macros/s/AKfycbzjqr1OunU1vJ_oqJkJJVi8VqOGdiBIr6-9FIWr0qBBAg5d0rvX2Mnw7qc0yRLQ25vP/exec',options)
     const result = await request.json()
 
     if(result && result.status === 'error'){
