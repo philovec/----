@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 function errMsg(err){
     console.dir(err)
-    alert(err)
+    alert(err.message)
 }
 
 async function postGAS(data){
@@ -24,11 +24,11 @@ async function postGAS(data){
     const result = await request.json()
 
     if(result && result.status === 'error'){
-        throw result.errMessage
+        throw new Error(result.errMessage)
     } else if(result && result.status === 'success'){
         return result
     } else {
-        throw 'GAS側で不明なエラーが発生しました。'
+        throw new Error('GAS側で不明なエラーが発生しました。')
     }
 }
 
@@ -92,7 +92,7 @@ async function movePage(action){
 
 async function getposition(){
     const geo = navigator.geolocation
-    return result = new Promise((resolve) =>{
+    return new Promise((resolve) =>{
         geo.getCurrentPosition(positionSuccess,positionError,{timeout:5000})
 
         async function positionSuccess(pos){
