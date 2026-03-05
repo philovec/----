@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 function errMsg(err){
     console.dir(err)
-    alert(err.message)
+    alert(err)
 }
 
 async function postGAS(data){
