@@ -153,6 +153,19 @@ select:focus, button:focus {
     white-space: nowrap;     /* 改行させない */
 }
 
+@media (min-width: 768px) {
+    #read {
+        display: table; /* スマホ用のスクロール設定(block)を解除し、元のテーブルに戻す */
+        width: 100%;
+        table-layout: auto;
+    }
+    
+    /* 7番目(備考)の列に、余った画面の幅を全て吸収させる */
+    #read th:nth-child(7), #read td:nth-child(7) {
+        width: 100%;
+    }
+}
+
 /* =========================================
    フッター
 ========================================= */
